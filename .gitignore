@@ -1,0 +1,10 @@
+out
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+build/
+.intellijPlatform/
+/.idea/
+/.remember/
+/tools/
+/gradle/
