@@ -27,7 +27,7 @@
     <option name="ActionButton.pressedBackground" value="18498c" />
     <option name="BLOCK_TERMINAL_BLOCK_BACKGROUND_END" value="041430" />
     <option name="BLOCK_TERMINAL_BLOCK_BACKGROUND_START" value="0b2147" />
-    <option name="BLOCK_TERMINAL_ERROR_BLOCK_STROKE_COLOR" value="ff3b3b" />
+    <option name="BLOCK_TERMINAL_ERROR_BLOCK_STROKE_COLOR" value="ff4fd8" />
     <option name="BLOCK_TERMINAL_GENERATE_COMMAND_CARET_COLOR" value="a9c4ea" />
     <option name="BLOCK_TERMINAL_GENERATE_COMMAND_PLACEHOLDER_FOREGROUND" value="a9c4ea" />
     <option name="BLOCK_TERMINAL_HOVERED_BLOCK_BACKGROUND_END" value="18498c03" />
@@ -46,7 +46,7 @@
     <option name="CONSOLE_BACKGROUND_KEY" value="020a18" />
     <option name="DELETED_LINES_COLOR" value="6c86b0" />
     <option name="DIAGRAM_ANNOTATION_EDGE" value="3d2a0c" />
-    <option name="DIAGRAM_BAD_EDGE" value="ff3b3b" />
+    <option name="DIAGRAM_BAD_EDGE" value="ff4fd8" />
     <option name="DIAGRAM_BEND" value="a9c4ea" />
     <option name="DIAGRAM_BEND_SELECTION" value="12402a" />
     <option name="DIAGRAM_COARSE_GRID" value="0f315d" />
@@ -76,7 +76,7 @@
     <option name="DOC_COMMENT_GUIDE" value="18498c" />
     <option name="DOC_COMMENT_LINK" value="6fb7ff" />
     <option name="EDITOR_GUTTER_BACKGROUND" value="020a18" />
-    <option name="ERROR_HINT" value="2a0d12" />
+    <option name="ERROR_HINT" value="2a0a26" />
     <option name="FILESTATUS_ADDED" value="57d68d" />
     <option name="FILESTATUS_COPIED" value="57d68d" />
     <option name="FILESTATUS_DELETED" value="6c86b0" />
@@ -215,10 +215,10 @@
     </option>
     <option name="BAD_CHARACTER">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="2" />
         <option name="ERROR_STRIPE_COLOR" />
       </value>
@@ -516,8 +516,8 @@
     </option>
     <option name="COMPOSE_SERVICE_STATUS_ERROR">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
-        <option name="BACKGROUND" value="3d1218" />
+        <option name="FOREGROUND" value="ff4fd8" />
+        <option name="BACKGROUND" value="3d1238" />
       </value>
     </option>
     <option name="COMPOSE_SERVICE_STATUS_NEUTRAL">
@@ -588,7 +588,7 @@
     </option>
     <option name="CONSOLE_ERROR_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
         <option name="EFFECT_COLOR" />
@@ -1013,10 +1013,10 @@
     </option>
     <option name="DEFAULT_INVALID_STRING_ESCAPE">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="2" />
         <option name="ERROR_STRIPE_COLOR" />
       </value>
@@ -1281,9 +1281,9 @@
         <option name="FOREGROUND" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="2" />
-        <option name="ERROR_STRIPE_COLOR" value="ff3b3b" />
+        <option name="ERROR_STRIPE_COLOR" value="ff4fd8" />
       </value>
     </option>
     <option name="EVALUATED_EXPRESSION_ATTRIBUTES">
@@ -1308,8 +1308,8 @@
     <option name="FILESTATUS_ERRORS">
       <value>
         <option name="EFFECT_TYPE" value="2" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
-        <option name="ERROR_STRIPE_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
+        <option name="ERROR_STRIPE_COLOR" value="ff4fd8" />
       </value>
     </option>
     <option name="FLEXMARK_ATTRIBUTES_BRACES">
@@ -1358,9 +1358,9 @@
     </option>
     <option name="GENERIC_SERVER_ERROR_OR_WARNING">
       <value>
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="1" />
-        <option name="ERROR_STRIPE_COLOR" value="ff3b3b" />
+        <option name="ERROR_STRIPE_COLOR" value="ff4fd8" />
       </value>
     </option>
     <option name="GHERKIN_REGEXP_PARAMETER">
@@ -1841,9 +1841,9 @@
     </option>
     <option name="KOTLIN_RESOLVED_TO_ERROR">
       <value>
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="0" />
-        <option name="ERROR_STRIPE_COLOR" value="ff3b3b" />
+        <option name="ERROR_STRIPE_COLOR" value="ff4fd8" />
       </value>
     </option>
     <option name="KOTLIN_SMART_CAST_RECEIVER">
@@ -1864,8 +1864,8 @@
     <option name="KOTLIN_TYPE_PARAMETER" baseAttributes="TYPE_PARAMETER_NAME_ATTRIBUTES" />
     <option name="KUBERNETES_POD_STATUS_ERROR">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
-        <option name="BACKGROUND" value="3d121826" />
+        <option name="FOREGROUND" value="ff4fd8" />
+        <option name="BACKGROUND" value="3d123826" />
       </value>
     </option>
     <option name="KUBERNETES_POD_STATUS_OTHER">
@@ -1966,7 +1966,7 @@
     <option name="LOGCAT_V2_LEVEL_ERROR">
       <value>
         <option name="FOREGROUND" value="18498c" />
-        <option name="BACKGROUND" value="3d1218" />
+        <option name="BACKGROUND" value="3d1238" />
       </value>
     </option>
     <option name="LOGCAT_V2_LEVEL_INFO">
@@ -1989,7 +1989,7 @@
     </option>
     <option name="LOGCAT_V2_MESSAGE_ASSERT">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
       </value>
     </option>
     <option name="LOGCAT_V2_MESSAGE_DEBUG">
@@ -1999,7 +1999,7 @@
     </option>
     <option name="LOGCAT_V2_MESSAGE_ERROR">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
       </value>
     </option>
     <option name="LOGCAT_V2_MESSAGE_INFO">
@@ -2028,7 +2028,7 @@
     </option>
     <option name="LOG_ERROR_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
         <option name="EFFECT_COLOR" />
@@ -2159,7 +2159,7 @@
         <option name="FOREGROUND" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="3" />
         <option name="ERROR_STRIPE_COLOR" />
       </value>
@@ -2310,8 +2310,8 @@
     </option>
     <option name="PROPERTIES.INVALID_STRING_ESCAPE">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -2422,9 +2422,9 @@
         <option name="FOREGROUND" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="2" />
-        <option name="ERROR_STRIPE_COLOR" value="ff3b3b" />
+        <option name="ERROR_STRIPE_COLOR" value="ff4fd8" />
       </value>
     </option>
     <option name="SASS_ATTRIBUTE">
@@ -2474,7 +2474,7 @@
     </option>
     <option name="SPY-JS.EXCEPTION">
       <value>
-        <option name="BACKGROUND" value="3d1218" />
+        <option name="BACKGROUND" value="3d1238" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -2611,7 +2611,7 @@
     </option>
     <option name="TEXT_STYLE_ERROR">
       <value>
-        <option name="EFFECT_COLOR" value="ff3b3b" />
+        <option name="EFFECT_COLOR" value="ff4fd8" />
         <option name="EFFECT_TYPE" value="5" />
       </value>
     </option>
@@ -2657,8 +2657,8 @@
     </option>
     <option name="UNMATCHED_BRACE_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
-        <option name="BACKGROUND" value="3d1218" />
+        <option name="FOREGROUND" value="ff4fd8" />
+        <option name="BACKGROUND" value="3d1238" />
         <option name="FONT_TYPE" value="0" />
         <option name="EFFECT_COLOR" />
         <option name="ERROR_STRIPE_COLOR" />
@@ -2733,11 +2733,11 @@
     </option>
     <option name="WRONG_REFERENCES_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="ff3b3b" />
+        <option name="FOREGROUND" value="ff4fd8" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="0" />
         <option name="EFFECT_COLOR" />
-        <option name="ERROR_STRIPE_COLOR" value="ff3b3b" />
+        <option name="ERROR_STRIPE_COLOR" value="ff4fd8" />
       </value>
     </option>
     <option name="XML_ATTRIBUTE_NAME">

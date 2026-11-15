@@ -21,7 +21,6 @@ import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.LafManagerListener;
-import com.intellij.ide.ui.laf.UIThemeLookAndFeelInfo;
 import com.intellij.openapi.diagnostic.Logger;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,7 +48,6 @@ import java.util.Map;
  */
 public final class TitleBars implements AppLifecycleListener, LafManagerListener, DynamicPluginListener {
   private static final String PLUGIN_ID = "tiling-blue";
-  private static final String THEME_ID = "566b065c-458c-4106-8861-d1f432b6a40d";
   private static final String KEY_PREFIX = "TilingBlue.TitleBar.";
   private static final Logger LOG = Logger.getInstance(TitleBars.class);
 
@@ -119,7 +117,7 @@ public final class TitleBars implements AppLifecycleListener, LafManagerListener
   private static void refresh() {
     if (!isSupported()) return;
     try {
-      if (!isThemeActive()) {
+      if (!TilingBlueTheme.isActive()) {
         uninstall();
         return;
       }
@@ -167,11 +165,6 @@ public final class TitleBars implements AppLifecycleListener, LafManagerListener
       if (supported) gtk = new GtkCss();
     }
     return supported;
-  }
-
-  private static boolean isThemeActive() {
-    UIThemeLookAndFeelInfo laf = LafManager.getInstance().getCurrentUIThemeLookAndFeel();
-    return laf != null && THEME_ID.equals(laf.getId());
   }
 
   private static String css() throws IOException {

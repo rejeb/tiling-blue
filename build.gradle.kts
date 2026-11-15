@@ -24,11 +24,7 @@ plugins {
 }
 
 group = "io.github.rejeb"
-
-// The version lives in plugin.xml only, so tools/build.sh and Gradle always agree.
-version = Regex("<version>(.+?)</version>")
-    .find(file("src/main/resources/META-INF/plugin.xml").readText())!!
-    .groupValues[1]
+version="1.0.1"
 
 repositories {
     mavenCentral()

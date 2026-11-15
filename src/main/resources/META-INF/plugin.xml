@@ -17,7 +17,6 @@
 <idea-plugin>
     <!-- Unique identifier of the plugin. It cannot be changed between the plugin versions. -->
     <id>io.github.rejeb.tilingblue</id>
-    <version>1.0.0</version>
 
     <name>Tiling Blue</name>
     <category>UI</category>
@@ -36,6 +35,9 @@
             <li>UI theme based on Islands Dark: framed tool windows and editor, boxed tabs, red selected tab,
                 blue selection, square buttons and popups</li>
             <li>Matching editor color scheme <b>Tiling Blue</b> (syntax, diff, VCS, console, terminal)</li>
+            <li>Tiled loading animations: the spinner is four tiles with focus moving clockwise (from the next
+                restart after choosing the theme), and progress bars are rows of segments that fill up, with a soft wave
+                rolling along them while the length is unknown</li>
             <li>On Linux/Wayland, dialog and welcome-screen title bars are themed too (they are drawn with GTK
                 there; the theme restyles them inside the IDE only, without installing a GTK theme)</li>
         </ul>
@@ -43,8 +45,8 @@
         ]]></description>
 
     <change-notes><![CDATA[
-        Initial release: Tiling Blue UI theme, matching Tiling Blue editor color scheme, and themed
-        dialog title bars on Linux/Wayland.
+        Initial release: Tiling Blue UI theme, matching Tiling Blue editor color scheme, tiled loading spinner and
+        segmented progress bars, and themed dialog title bars on Linux/Wayland.
     ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
@@ -57,6 +59,8 @@
 
     <!-- Linux/Wayland dialog title bars (no-op elsewhere): see io.github.rejeb.tilingblue.TitleBars -->
     <applicationListeners>
+        <!-- Focus-cycle loading spinner: see io.github.rejeb.tilingblue.LoadingSpinner -->
+        <listener class="io.github.rejeb.tilingblue.LoadingSpinner" topic="com.intellij.ide.AppLifecycleListener"/>
         <listener class="io.github.rejeb.tilingblue.TitleBars" topic="com.intellij.ide.AppLifecycleListener"/>
         <listener class="io.github.rejeb.tilingblue.TitleBars" topic="com.intellij.ide.ui.LafManagerListener"/>
         <listener class="io.github.rejeb.tilingblue.TitleBars" topic="com.intellij.ide.plugins.DynamicPluginListener"/>

@@ -29,7 +29,10 @@
     "tb-pressed": "#2f8cff4d",
     "tb-amber": "#ffb347",
     "tb-green": "#57d68d",
-    "tb-red-bg": "#2a0d12",
+    "tb-err": "#ff4fd8",
+    "tb-err-soft": "#ff9be9",
+    "tb-err-bg": "#2a0a26",
+    "tb-err-border": "#7a1f6c",
     "tb-amber-bg": "#2a1c08",
     "tb-green-bg": "#0a2a1a",
 
@@ -40,7 +43,7 @@
     "text-over-accent": "tb-ink",
     "text-over-accent-inverted": "tb-fg",
     "text-link": "tb-link",
-    "text-error": "tb-hi",
+    "text-error": "tb-err",
     "text-warning": "tb-amber",
     "text-success": "tb-green",
     "editor-text": "tb-fg",
@@ -62,10 +65,10 @@
     "accent-brand-border": "tb-line",
     "accent-brand-bg-secondary": "tb-sel-muted",
     "accent-brand-border-secondary": "tb-line",
-    "accent-error-bg": "tb-hi",
-    "accent-error-border": "tb-hi",
-    "accent-error-bg-secondary": "tb-red-bg",
-    "accent-error-border-secondary": "#7a1f27",
+    "accent-error-bg": "tb-err",
+    "accent-error-border": "tb-err",
+    "accent-error-bg-secondary": "tb-err-bg",
+    "accent-error-border-secondary": "tb-err-border",
     "accent-warning-bg": "tb-amber",
     "accent-warning-border": "tb-amber",
     "accent-warning-bg-secondary": "tb-amber-bg",
@@ -115,9 +118,9 @@
     "control-border-small": "tb-line-50",
     "control-brand-bg": "tb-line",
     "control-brand-border": "tb-hi",
-    "control-error-bg": "tb-hi",
-    "control-error-border": "tb-hi",
-    "control-error-border-secondary": "#7a1f27",
+    "control-error-bg": "tb-err",
+    "control-error-border": "tb-err",
+    "control-error-border-secondary": "tb-err-border",
     "control-warning-bg": "tb-amber",
     "control-warning-border": "tb-amber",
     "control-warning-border-secondary": "#7a5520",
@@ -144,8 +147,8 @@
     "feedback-success-border": "#2a6b47",
     "feedback-warning-bg": "tb-amber-bg",
     "feedback-warning-border": "#7a5520",
-    "feedback-error-bg": "tb-red-bg",
-    "feedback-error-border": "#7a1f27",
+    "feedback-error-bg": "tb-err-bg",
+    "feedback-error-border": "tb-err-border",
     "feedback-control-border": "#2f8cff66",
     "feedback-ai-bg": "tb-sel-muted",
     "feedback-ai-border": "tb-line",
@@ -341,6 +344,9 @@
         "buttonPressedBackground": "tb-pressed",
         "closeHoverBackground": "tb-hi",
         "closeHoverForeground": "tb-ink"
+      },
+      "ProgressBar": {
+        "leadColor": "tb-hi-soft"
       }
     },
     "MainMenu": {
@@ -524,7 +530,7 @@
       "background": "tb-panel",
       "borderColor": "tb-hi",
       "foreground": "tb-fg",
-      "errorForeground": "tb-hi"
+      "errorForeground": "tb-err"
     },
     "SearchMatch": {
       "startBackground": "tb-hi",
@@ -537,6 +543,8 @@
       "focusWidth": 2,
       "focusColor": "tb-hi",
       "focusedBorderColor": "tb-hi",
+      "errorFocusColor": "tb-err",
+      "inactiveErrorFocusColor": "tb-err-border",
       "borderColor": "tb-line",
       "disabledBorderColor": "tb-line-30",
       "hoverIconColor": "tb-fg",
@@ -623,7 +631,7 @@
     "Label": {
       "foreground": "tb-fg",
       "infoForeground": "tb-dim",
-      "errorForeground": "tb-hi",
+      "errorForeground": "tb-err",
       "warningForeground": "tb-amber",
       "successForeground": "tb-green",
       "disabledForeground": "tb-faint"
@@ -638,17 +646,21 @@
       "background": "tb-hi",
       "foreground": "tb-ink"
     },
+    "ProgressBarUI": "io.github.rejeb.tilingblue.BootBarUI",
     "ProgressBar": {
       "trackColor": "tb-bar",
-      "progressColor": "tb-line",
-      "indeterminateStartColor": "tb-line",
-      "indeterminateEndColor": "tb-link",
+      "progressColor": "tb-hi",
+      "indeterminateStartColor": "tb-hi",
+      "indeterminateEndColor": "tb-hi-soft",
       "passedColor": "tb-green",
       "passedEndColor": "#8fe8b4",
-      "failedColor": "tb-hi",
-      "failedEndColor": "tb-hi-soft",
+      "failedColor": "tb-err",
+      "failedEndColor": "tb-err-soft",
       "warningColor": "tb-amber",
       "warningEndColor": "#ffd08a"
+    },
+    "ProgressIcon": {
+      "color": "tb-hi"
     },
     "ScrollBar": {
       "thumbColor": "#2f8cff59",
@@ -696,8 +708,8 @@
       "foreground": "tb-fg"
     },
     "ValidationTooltip": {
-      "errorBackground": "tb-red-bg",
-      "errorBorderColor": "tb-hi",
+      "errorBackground": "tb-err-bg",
+      "errorBorderColor": "tb-err",
       "warningBackground": "tb-amber-bg",
       "warningBorderColor": "tb-amber"
     },
@@ -706,8 +718,8 @@
       "borderColor": "tb-line",
       "foreground": "tb-fg",
       "linkForeground": "tb-link",
-      "errorBackground": "tb-red-bg",
-      "errorBorderColor": "tb-hi",
+      "errorBackground": "tb-err-bg",
+      "errorBorderColor": "tb-err",
       "errorForeground": "tb-fg",
       "arc": 0,
       "MoreButton.background": "tb-raised",
@@ -717,8 +729,8 @@
       "ToolWindow.informativeBorderColor": "tb-line",
       "ToolWindow.warningBackground": "tb-amber-bg",
       "ToolWindow.warningBorderColor": "tb-amber",
-      "ToolWindow.errorBackground": "tb-red-bg",
-      "ToolWindow.errorBorderColor": "tb-hi"
+      "ToolWindow.errorBackground": "tb-err-bg",
+      "ToolWindow.errorBorderColor": "tb-err"
     },
     "Banner": {
       "infoBackground": "tb-sel-muted",
@@ -731,8 +743,8 @@
       "successBorderColor": "#2a6b47",
       "warningBackground": "tb-amber-bg",
       "warningBorderColor": "#7a5520",
-      "errorBackground": "tb-red-bg",
-      "errorBorderColor": "#7a1f27",
+      "errorBackground": "tb-err-bg",
+      "errorBorderColor": "tb-err-border",
       "aiBackground": "tb-sel-muted",
       "aiBorderColor": "tb-line"
     },
@@ -753,8 +765,8 @@
     "Editor.ToolTip": {
       "background": "tb-bar",
       "border": "tb-line",
-      "errorBackground": "tb-red-bg",
-      "errorBorder": "tb-hi",
+      "errorBackground": "tb-err-bg",
+      "errorBorder": "tb-err",
       "warningBackground": "tb-amber-bg",
       "warningBorder": "tb-amber",
       "successBackground": "tb-green-bg",
@@ -912,6 +924,24 @@
       "#B589EC": "#c58fff",
       "#A571E6": "#c58fff",
       "#2F2936": "#1a1a45"
-    }
+    },
+    "/process/step_1.svg": "/theme/icons/process/step_1.svg",
+    "/process/step_2.svg": "/theme/icons/process/step_2.svg",
+    "/process/step_3.svg": "/theme/icons/process/step_3.svg",
+    "/process/step_4.svg": "/theme/icons/process/step_4.svg",
+    "/process/step_5.svg": "/theme/icons/process/step_5.svg",
+    "/process/step_6.svg": "/theme/icons/process/step_6.svg",
+    "/process/step_7.svg": "/theme/icons/process/step_7.svg",
+    "/process/step_8.svg": "/theme/icons/process/step_8.svg",
+    "/process/step_passive.svg": "/theme/icons/process/step_passive.svg",
+    "/process/big/step_1.svg": "/theme/icons/process/big/step_1.svg",
+    "/process/big/step_2.svg": "/theme/icons/process/big/step_2.svg",
+    "/process/big/step_3.svg": "/theme/icons/process/big/step_3.svg",
+    "/process/big/step_4.svg": "/theme/icons/process/big/step_4.svg",
+    "/process/big/step_5.svg": "/theme/icons/process/big/step_5.svg",
+    "/process/big/step_6.svg": "/theme/icons/process/big/step_6.svg",
+    "/process/big/step_7.svg": "/theme/icons/process/big/step_7.svg",
+    "/process/big/step_8.svg": "/theme/icons/process/big/step_8.svg",
+    "/process/big/step_passive.svg": "/theme/icons/process/big/step_passive.svg"
   }
 }
