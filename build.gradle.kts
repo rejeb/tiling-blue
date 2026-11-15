@@ -24,7 +24,7 @@ plugins {
 }
 
 group = "io.github.rejeb"
-version="1.0.1"
+version="1.1.0"
 
 repositories {
     mavenCentral()
@@ -46,6 +46,10 @@ dependencies {
         intellijIdea("2026.2")
         pluginVerifier()
     }
+    // Plain JUnit 5 for the pure classes (BundledFonts, UiFontPolicy); no IDE test framework needed.
+    testImplementation(platform("org.junit:junit-bom:5.11.4"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 intellijPlatform {
@@ -67,11 +71,56 @@ intellijPlatform {
     }
 }
 
+// The two UI themes, Tiling Blue Dark and Tiling Blue Island Dark, share one source: src/main/theme/tilingblue.theme.json.
+// Each file in src/main/theme/variants adds its name, its parent theme and the keys of its own; merged here into
+// theme/tilingblue-<variant>.theme.json in the plugin's resources (registered by themeProvider in plugin.xml).
+val generateThemes = tasks.register("generateThemes") {
+    val sources = layout.projectDirectory.dir("src/main/theme")
+    val output = layout.buildDirectory.dir("generated/themes")
+    inputs.dir(sources)
+    outputs.dir(output)
+    doLast {
+        // the variant's value wins; nested objects are merged key by key
+        fun merge(base: Map<*, *>, variant: Map<*, *>): Map<Any?, Any?> {
+            val merged = LinkedHashMap<Any?, Any?>(base)
+            for ((key, value) in variant) {
+                val inBase = merged[key]
+                merged[key] = if (value is Map<*, *> && inBase is Map<*, *>) merge(inBase, value) else value
+            }
+            return merged
+        }
+        val json = groovy.json.JsonSlurper()
+        val shared = json.parse(sources.file("tilingblue.theme.json").asFile) as Map<*, *>
+        val themes = output.get().dir("theme").asFile
+        themes.deleteRecursively()
+        themes.mkdirs()
+        val variants = sources.dir("variants").asFile.listFiles { f -> f.name.endsWith(".theme.json") }.orEmpty()
+        check(variants.isNotEmpty()) { "no theme variants in ${sources.dir("variants")}" }
+        for (variant in variants.sortedBy { it.name }) {
+            val merged = merge(shared, json.parse(variant) as Map<*, *>)
+            // name and parent first, as in a hand-written theme
+            val ordered = (listOf("name", "dark", "author", "parentTheme") + merged.keys).distinct()
+                .filter { it in merged }.associateWith { merged[it] }
+            val text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(ordered))
+            themes.resolve("tilingblue-${variant.name}").writeText(text + "\n")
+        }
+    }
+}
+
+sourceSets {
+    main {
+        resources.srcDir(generateThemes)
+    }
+}
+
 tasks {
     compileJava {
         options.encoding = "UTF-8"
     }
     jar {
         from("LICENSE") { into("META-INF") }
+    }
+    test {
+        useJUnitPlatform()
     }
 }

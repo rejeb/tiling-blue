@@ -47,6 +47,7 @@ headerbar:backdrop,
 headerbar .title,
 .titlebar .title {
   color: ${foreground};
+  font-family: "IBM Plex Mono", monospace;
   font-weight: bold;
   text-shadow: none;
 }

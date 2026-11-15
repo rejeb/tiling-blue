@@ -46,7 +46,8 @@ import java.awt.Rectangle;
  * status colour and uses its {@code *EndColor} partner as the lead colour. Vertical bars and bars with a custom
  * {@code ProgressBar.progressPaint} are left to IntelliJ.
  * <p>
- * Registered as {@code ProgressBarUI} in tilingblue.theme.json, so it is only used while Tiling Blue is active.
+ * Registered as {@code ProgressBarUI} in both Tiling Blue themes (src/main/theme/tilingblue.theme.json), so it is only
+ * used while one of them is active.
  * docs/ui-prototype shows the alternatives that were considered.
  */
 public final class BootBarUI extends DarculaProgressBarUI {
@@ -68,15 +69,29 @@ public final class BootBarUI extends DarculaProgressBarUI {
     return new BootBarUI();
   }
 
-  /** {@link #HEIGHT} tall, unless the bar paints its text or its owner chose a size with ProgressBar.stripeWidth. */
+  /** {@link #barHeight} tall, unless the bar paints its text. */
   @Override
   public Dimension getPreferredSize(JComponent c) {
     Dimension size = super.getPreferredSize(c);
-    if (c instanceof JProgressBar bar && bar.getOrientation() == SwingConstants.HORIZONTAL && !bar.isStringPainted()
-        && bar.getClientProperty("ProgressBar.stripeWidth") == null) {
-      size.height = JBUIScale.scale(HEIGHT);
+    if (c instanceof JProgressBar bar && bar.getOrientation() == SwingConstants.HORIZONTAL && !bar.isStringPainted()) {
+      size.height = JBUIScale.scale(barHeight(bar.getClientProperty("ProgressBar.stripeWidth")));
     }
     return size;
+  }
+
+  /**
+   * Bar height before UI scaling: {@link #HEIGHT}, or the owner's {@code ProgressBar.stripeWidth} when that is thicker.
+   * A thinner request does not shrink the segments: the test runner's status line asks for 3 px, the loading decorator
+   * for 2 px, and the prototype draws every bar {@link #HEIGHT} tall.
+   */
+  static int barHeight(@Nullable Object requested) {
+    if (requested == null) return HEIGHT;
+    try {
+      return Math.max(HEIGHT, Integer.parseInt(requested.toString().trim()));
+    }
+    catch (NumberFormatException e) {
+      return HEIGHT;
+    }
   }
 
   @Override

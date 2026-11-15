@@ -1,0 +1,29 @@
+{
+  "name": "Tiling Blue Dark",
+  "parentTheme": "ExperimentalDark",
+
+  "ui": {
+    "MainToolbar": {
+      "borderColor": "tb-line"
+    },
+
+    "ToolWindow": {
+      "Header.height": 34,
+      "borderColor": "tb-line",
+      "HeaderTab.underlineColor": "tb-hi",
+      "HeaderTab.inactiveUnderlineColor": "tb-line",
+      "HeaderTab.underlineHeight": 2,
+      "HeaderTab.underlineArc": 0
+    },
+
+    "EditorTabs": {
+      "regularBorderColor": "#00000000",
+      "inactiveUnderlinedTabBorderColor": "tb-line",
+      "tabInsets": "-4,8,-4,8",
+      "underlineColor": "tb-hi",
+      "inactiveUnderlineColor": "tb-hi",
+      "underlineHeight": 2,
+      "underlineArc": 0
+    }
+  }
+}

@@ -14,6 +14,12 @@
   limitations under the License.
 -->
 <scheme name="Tiling Blue" version="142" parent_scheme="Darcula">
+  <option name="FONT_SCALE" value="1.0" />
+  <option name="LINE_SPACING" value="1.1" />
+  <font>
+    <option name="EDITOR_FONT_NAME" value="IBM Plex Mono" />
+    <option name="EDITOR_FONT_SIZE" value="14" />
+  </font>
   <metaInfo>
     <property name="ide">idea</property>
     <property name="originalScheme">Tiling Blue</property>
@@ -100,7 +106,7 @@
     <option name="IGNORED_ADDED_LINES_BORDER_COLOR" value="57d68d" />
     <option name="IGNORED_DELETED_LINES_BORDER_COLOR" value="6c86b0" />
     <option name="IGNORED_MODIFIED_LINES_BORDER_COLOR" value="2f8cff" />
-    <option name="INDENT_GUIDE" value="0f315d" />
+    <option name="INDENT_GUIDE" value="041430" />
     <option name="INFORMATION_HINT" value="041430" />
     <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="041430" />
     <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="041430" />
@@ -141,31 +147,31 @@
     <option name="SELECTION_FOREGROUND" value="00040c" />
     <option name="SOFT_WRAP_SIGN_COLOR" value="3e5680" />
     <option name="STRING_CONTENT_INDENT_GUIDE" value="12402a" />
-    <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="0414308c" />
+    <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="2f8cff99" />
     <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="2f8cff99" />
-    <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="6c86b01a" />
-    <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="04143000" />
+    <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="2f8cff00" />
+    <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="2f8cff59" />
     <option name="ScrollBar.Mac.Transparent.thumbColor" value="2f8cff59" />
-    <option name="ScrollBar.Mac.Transparent.trackColor" value="6c86b000" />
-    <option name="ScrollBar.Mac.hoverThumbBorderColor" value="0414308c" />
+    <option name="ScrollBar.Mac.Transparent.trackColor" value="2f8cff00" />
+    <option name="ScrollBar.Mac.hoverThumbBorderColor" value="2f8cff99" />
     <option name="ScrollBar.Mac.hoverThumbColor" value="2f8cff99" />
-    <option name="ScrollBar.Mac.hoverTrackColor" value="6c86b000" />
-    <option name="ScrollBar.Mac.thumbBorderColor" value="04143059" />
+    <option name="ScrollBar.Mac.hoverTrackColor" value="2f8cff00" />
+    <option name="ScrollBar.Mac.thumbBorderColor" value="2f8cff59" />
     <option name="ScrollBar.Mac.thumbColor" value="2f8cff59" />
-    <option name="ScrollBar.Mac.trackColor" value="6c86b000" />
-    <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="0b214759" />
-    <option name="ScrollBar.Transparent.hoverThumbColor" value="a9c4ea59" />
-    <option name="ScrollBar.Transparent.hoverTrackColor" value="6c86b01a" />
-    <option name="ScrollBar.Transparent.thumbBorderColor" value="0b214747" />
-    <option name="ScrollBar.Transparent.thumbColor" value="a9c4ea47" />
-    <option name="ScrollBar.Transparent.trackColor" value="6c86b000" />
+    <option name="ScrollBar.Mac.trackColor" value="2f8cff00" />
+    <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="2f8cff99" />
+    <option name="ScrollBar.Transparent.hoverThumbColor" value="2f8cff99" />
+    <option name="ScrollBar.Transparent.hoverTrackColor" value="2f8cff00" />
+    <option name="ScrollBar.Transparent.thumbBorderColor" value="2f8cff59" />
+    <option name="ScrollBar.Transparent.thumbColor" value="2f8cff59" />
+    <option name="ScrollBar.Transparent.trackColor" value="2f8cff00" />
     <option name="ScrollBar.background" value="0f315d" />
-    <option name="ScrollBar.hoverThumbBorderColor" value="0b214759" />
-    <option name="ScrollBar.hoverThumbColor" value="a9c4ea59" />
-    <option name="ScrollBar.hoverTrackColor" value="6c86b000" />
-    <option name="ScrollBar.thumbBorderColor" value="0b214747" />
-    <option name="ScrollBar.thumbColor" value="a9c4ea47" />
-    <option name="ScrollBar.trackColor" value="6c86b000" />
+    <option name="ScrollBar.hoverThumbBorderColor" value="2f8cff99" />
+    <option name="ScrollBar.hoverThumbColor" value="2f8cff99" />
+    <option name="ScrollBar.hoverTrackColor" value="2f8cff00" />
+    <option name="ScrollBar.thumbBorderColor" value="2f8cff59" />
+    <option name="ScrollBar.thumbColor" value="2f8cff59" />
+    <option name="ScrollBar.trackColor" value="2f8cff00" />
     <option name="Scrollbar.Tabs.HoveredThumbColor" value="3e5680ff" />
     <option name="Scrollbar.Tabs.ThumbColor" value="0f315dff" />
     <option name="Scrollbar.Tabs.TransparentThumbColor" value="0f315d00" />
@@ -2568,6 +2574,11 @@
       <value>
         <option name="FOREGROUND" value="a9c4ea" />
         <option name="FONT_TYPE" value="2" />
+      </value>
+    </option>
+    <option name="TAB_SELECTED_INACTIVE">
+      <value>
+        <option name="BACKGROUND" value="020a18" />
       </value>
     </option>
     <option name="TEMPLATE_VARIABLE_ATTRIBUTES">

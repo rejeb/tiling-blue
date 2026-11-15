@@ -1,0 +1,13 @@
+{
+  "name": "Tiling Blue Island Dark",
+  "parentTheme": "Islands Dark",
+
+  "ui": {
+    "Islands": 1,
+
+    "EditorTabs": {
+      "regularBorderColor": "tb-line",
+      "inactiveUnderlinedTabBorderColor": "tb-hi"
+    }
+  }
+}

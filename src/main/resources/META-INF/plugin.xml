@@ -23,8 +23,8 @@
 
     <vendor url="https://rejeb.is-a.dev">rbenrejeb</vendor>
 
-    <!-- 2026.2+: Islands UI keys (Island.*); its Java 25 runtime also has the Foreign Function API used for the
-         Linux/Wayland title bars. -->
+    <!-- 2026.2+: Islands UI keys (Island.*, used when the owner turns on islands for custom themes); its Java 25
+         runtime also has the Foreign Function API used for the Linux/Wayland title bars. -->
     <idea-version since-build="262"/>
 
     <description><![CDATA[
@@ -32,37 +32,90 @@
         background, with red marking whatever has focus. Borrowed from the <em>wargames</em> palette of
         <a href="https://rejeb.is-a.dev">rejeb.is-a.dev</a>.
         <ul>
-            <li>UI theme based on Islands Dark: framed tool windows and editor, boxed tabs, red selected tab,
-                blue selection, square buttons and popups</li>
+            <li>Two UI themes in the same colours: <b>Tiling Blue Island Dark</b> (the default), based on Islands
+                Dark: framed panels with gaps between them, editor tabs as outlined boxes (as in earlier versions); and
+                <b>Tiling Blue Dark</b>, based on
+                Dark: tool windows and editor side by side with blue borders, full-height tabs underlined in red with
+                lines between them. Both: red selected tab, blue selection, square buttons and popups</li>
+            <li>The lines between editor tabs in Tiling Blue Dark are IntelliJ's registry setting
+                <code>ide.new.editor.tabs.vertical.borders</code>: the theme turns it on while it is active and off
+                again when you choose another theme (unless you had turned it on yourself). With that setting on, the
+                theme also draws the line after the last tab, which IntelliJ leaves out</li>
             <li>Matching editor color scheme <b>Tiling Blue</b> (syntax, diff, VCS, console, terminal)</li>
             <li>Tiled loading animations: the spinner is four tiles with focus moving clockwise (from the next
                 restart after choosing the theme), and progress bars are rows of segments that fill up, with a soft wave
                 rolling along them while the length is unknown</li>
             <li>On Linux/Wayland, dialog and welcome-screen title bars are themed too (they are drawn with GTK
                 there; the theme restyles them inside the IDE only, without installing a GTK theme)</li>
+            <li>Solid icons: flat tiles in the theme's colours for the tool windows, toolbars, trees and gutter;
+                square checkboxes and window buttons</li>
+            <li>IBM Plex Mono 14 bundled (SIL Open Font License) for the editor and the UI. If you picked your own
+                UI font, the theme asks before replacing it, and gives your font back when you switch themes</li>
         </ul>
-        For the full look, install IBM Plex Mono and select it as the UI and editor font.
         ]]></description>
 
     <change-notes><![CDATA[
-        Initial release: Tiling Blue UI theme, matching Tiling Blue editor color scheme, tiled loading spinner and
+        <b>1.1.0</b>: Two themes: Tiling Blue Island Dark (the default, based on Islands Dark: the theme of earlier
+        versions renamed, with the same editor tabs) and the new Tiling Blue Dark, based on Dark: full-height 36 px
+        editor tabs with lines between them and after the last one, 34 px tool window headers, underlined tool window
+        tabs, blue borders around the editor tabs and tool windows; Solid icon set; IBM Plex Mono 14 bundled for the
+        editor and the UI (asks before replacing a custom UI font, restores it when you leave the theme); window closer
+        to the design: 30 px toolbar buttons, narrower tool window stripes, 30 px status bar, square checkboxes, framed
+        dialogs, blue scrollbars, ink icons on a focused selection; offers a restart for the tiled loading spinner when
+        the theme is installed or chosen without one; uninstalling leaves no title bar listener or progress bar class of
+        the plugin behind.<br/>
+        <b>1.0.1</b> and earlier: Initial release: Tiling Blue UI theme, matching Tiling Blue editor color scheme, tiled loading spinner and
         segmented progress bars, and themed dialog title bars on Linux/Wayland.
     ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!-- Two UI themes built from src/main/theme (see build.gradle.kts). IntelliJ switches to the last theme a newly
+             installed plugin adds, so Island Dark, the default, comes last; it keeps the id of the single theme of
+             earlier versions, so it stays selected after an update. See io.github.rejeb.tilingblue.TilingBlueTheme -->
+        <themeProvider
+                id="a2065515-ee33-47ac-91e5-4bae224eb426"
+                path="/theme/tilingblue-dark.theme.json"/>
         <themeProvider
                 id="566b065c-458c-4106-8861-d1f432b6a40d"
-                path="/theme/tilingblue.theme.json"/>
+                path="/theme/tilingblue-island-dark.theme.json"/>
+        <!-- UI font IBM Plex Mono 14 while Tiling Blue is active: see io.github.rejeb.tilingblue.UiFontSwitcher -->
+        <applicationService serviceImplementation="io.github.rejeb.tilingblue.UiFontState"/>
+        <!-- whether the lines between editor tabs are on because of the plugin: see io.github.rejeb.tilingblue.TabDividers -->
+        <applicationService serviceImplementation="io.github.rejeb.tilingblue.TabDividerState"/>
+        <notificationGroup id="Tiling Blue" displayType="STICKY_BALLOON"/>
     </extensions>
 
     <!-- Linux/Wayland dialog title bars (no-op elsewhere): see io.github.rejeb.tilingblue.TitleBars -->
     <applicationListeners>
+        <!-- Bundled IBM Plex Mono (editor and UI font): see io.github.rejeb.tilingblue.Fonts -->
+        <listener class="io.github.rejeb.tilingblue.Fonts" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="io.github.rejeb.tilingblue.Fonts" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+        <listener class="io.github.rejeb.tilingblue.UiFontSwitcher" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="io.github.rejeb.tilingblue.UiFontSwitcher" topic="com.intellij.ide.ui.LafManagerListener"/>
+        <listener class="io.github.rejeb.tilingblue.UiFontSwitcher" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+        <!-- Lines between editor tabs while Tiling Blue Dark is active: see io.github.rejeb.tilingblue.TabDividers -->
+        <listener class="io.github.rejeb.tilingblue.TabDividers" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="io.github.rejeb.tilingblue.TabDividers" topic="com.intellij.ide.ui.LafManagerListener"/>
+        <listener class="io.github.rejeb.tilingblue.TabDividers" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+        <!-- Line after the last editor tab, drawn on the glass pane: see io.github.rejeb.tilingblue.TabEndLines -->
+        <listener class="io.github.rejeb.tilingblue.TabEndLineSync" topic="com.intellij.ide.ui.LafManagerListener"/>
+        <listener class="io.github.rejeb.tilingblue.TabEndLineSync" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+        <!-- Segmented progress bars (BootBarUI) out of Swing's cache on unload, so an uninstall leaves nothing of the
+             plugin loaded: see io.github.rejeb.tilingblue.UiClassCache -->
+        <listener class="io.github.rejeb.tilingblue.UiClassCache" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
         <!-- Focus-cycle loading spinner: see io.github.rejeb.tilingblue.LoadingSpinner -->
         <listener class="io.github.rejeb.tilingblue.LoadingSpinner" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="io.github.rejeb.tilingblue.LoadingSpinner" topic="com.intellij.ide.ui.LafManagerListener"/>
+        <listener class="io.github.rejeb.tilingblue.LoadingSpinner" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
         <listener class="io.github.rejeb.tilingblue.TitleBars" topic="com.intellij.ide.AppLifecycleListener"/>
         <listener class="io.github.rejeb.tilingblue.TitleBars" topic="com.intellij.ide.ui.LafManagerListener"/>
         <listener class="io.github.rejeb.tilingblue.TitleBars" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
     </applicationListeners>
+
+    <projectListeners>
+        <listener class="io.github.rejeb.tilingblue.TabEndLineSync"
+                  topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
+    </projectListeners>
 </idea-plugin>

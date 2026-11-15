@@ -47,7 +47,6 @@ import java.util.Map;
  * and removes it again when another theme is chosen or the plugin is unloaded. Everywhere else it does nothing.
  */
 public final class TitleBars implements AppLifecycleListener, LafManagerListener, DynamicPluginListener {
-  private static final String PLUGIN_ID = "tiling-blue";
   private static final String KEY_PREFIX = "TilingBlue.TitleBar.";
   private static final Logger LOG = Logger.getInstance(TitleBars.class);
 
@@ -71,6 +70,12 @@ public final class TitleBars implements AppLifecycleListener, LafManagerListener
   private static String template;
   private static String installedCss;
   private static AWTEventListener windowListener;
+  /**
+   * Set when this plugin starts unloading. IntelliJ replaces the theme of an unloaded plugin after
+   * {@link #beforePluginUnload}; should that change still reach this listener, it must not put the window listener
+   * back: the toolkit would keep the plugin loaded (each loaded version of the plugin has its own).
+   */
+  private static volatile boolean unloading;
 
   // Not appStarted(): it is @ApiStatus.Internal, which JetBrains Marketplace flags. appFrameCreated() runs before
   // the first window opens, and the AWT listener installed by start() handles every window after that.
@@ -86,16 +91,18 @@ public final class TitleBars implements AppLifecycleListener, LafManagerListener
 
   @Override
   public void pluginLoaded(@NotNull IdeaPluginDescriptor descriptor) {
-    if (isThisPlugin(descriptor)) onEdt(TitleBars::start);
+    if (TilingBlueTheme.isThisPlugin(descriptor)) onEdt(TitleBars::start);
   }
 
   @Override
   public void beforePluginUnload(@NotNull IdeaPluginDescriptor descriptor, boolean isUpdate) {
-    if (isThisPlugin(descriptor)) onEdt(TitleBars::stop);
+    if (!TilingBlueTheme.isThisPlugin(descriptor)) return;
+    unloading = true;
+    onEdt(TitleBars::stop);
   }
 
   private static void start() {
-    if (!isSupported()) return;
+    if (unloading || !isSupported()) return;
     if (windowListener == null) {
       // GTK is loaded by the runtime when the first window gets its peer; re-check whenever a window opens
       windowListener = event -> {
@@ -185,10 +192,6 @@ public final class TitleBars implements AppLifecycleListener, LafManagerListener
   private static String toCss(Color c) {
     if (c.getAlpha() == 255) return String.format(Locale.ROOT, "#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
     return String.format(Locale.ROOT, "rgba(%d,%d,%d,%.3f)", c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha() / 255.0);
-  }
-
-  private static boolean isThisPlugin(IdeaPluginDescriptor descriptor) {
-    return PLUGIN_ID.equals(descriptor.getPluginId().getIdString());
   }
 
   private static void onEdt(Runnable r) {
